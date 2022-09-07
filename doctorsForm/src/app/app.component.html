@@ -10,19 +10,27 @@
     Favorite Hobby:
     <input type="text" formControlName="hobbyControl" />
   </label>
-  <h2>Contact Info</h2>
-  <div formGroupName="contactInfo">
-    <label>
-      Email:
-      <input type="text" formControlName="email" />
-    </label>
-    <br />
-    <br />
-    <label>
-      Phone Number:
-      <input type="text" formControlName="phoneNumber" />
-    </label>
-  </div>
   <br />
+  <br />
+  <label
+    >Can we contact you?
+    <input type="checkbox" formControlName="canContacted" />
+  </label>
+  <div *ngIf="applicationForm.get('canContacted')?.value">
+    <h2>Contact Info</h2>
+    <div formGroupName="contactInfo">
+      <label>
+        Email:
+        <input type="text" formControlName="email" />
+      </label>
+      <br />
+      <br />
+      <label>
+        Phone Number:
+        <input type="text" formControlName="phoneNumber" />
+      </label>
+    </div>
+    <br />
+  </div>
   <button type="submit">Apply</button>
 </form>

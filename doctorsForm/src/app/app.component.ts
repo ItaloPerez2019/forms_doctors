@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+// import IUser from '../app/user.model;
 
 @Component({
   selector: 'app-root',
@@ -9,17 +10,18 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   applicationForm: FormGroup;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.initializeForm();
   }
 
   initializeForm(): void {
-    this.applicationForm = new FormGroup({
-      nameControl: new FormControl('John Doe'),
-      hobbyControl: new FormControl('Whistling'),
-      contactInfo: new FormGroup({
-        email: new FormControl('fake@fake.com'),
-        phoneNumber: new FormControl('555-5555'),
+    this.applicationForm = this.fb.group({
+      nameControl: '',
+      hobbyControl: '',
+      canContacted: 'false',
+      contactInfo: this.fb.group({
+        email: '',
+        phoneNumber: '',
       }),
     });
   }
